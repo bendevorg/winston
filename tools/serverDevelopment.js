@@ -9,7 +9,7 @@ const morgan = require('morgan');
 const logger = require('./logger');
 const app = express();
 
-app.use('/telegram', router);
+app.use('/api', router);
 app.use(logger.errorHandler());
 app.use(morgan('tiny'));
 

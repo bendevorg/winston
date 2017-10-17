@@ -9,7 +9,7 @@ const logger = require('./logger');
 
 const app = express();
 
-app.use('/telegram', router);
+app.use('/api', router);
 app.use(logger.errorHandler());
 
 module.exports = app;

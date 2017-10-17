@@ -1,5 +1,5 @@
 {
-  "name": "sombra",
+  "name": "winston",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/guiconti/sombra.git"
+    "url": "git+https://github.com/guiconti/winston.git"
   },
   "author": "",
   "license": "ISC",
@@ -31,7 +31,7 @@
     "nodemon": "^1.12.0"
   },
   "bugs": {
-    "url": "https://github.com/guiconti/sombra/issues"
+    "url": "https://github.com/guiconti/winston/issues"
   },
-  "homepage": "https://github.com/guiconti/sombra#readme"
+  "homepage": "https://github.com/guiconti/winston#readme"
 }
