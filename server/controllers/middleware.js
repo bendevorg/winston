@@ -3,8 +3,9 @@
  * @module controllers/middleware
  */
 
-const tokenManager = require('./utils/tokenManager');
+const apiKeyManager = require('./utils/apiKeyManager');
 const validator = require('../utils/validator');
+const constants = require('../utils/constants');
 const database = require('../models/database');
 const logger = require('../../tools/logger');
 
@@ -17,32 +18,32 @@ const logger = require('../../tools/logger');
  */
 module.exports = function (req, res, next){
   const {API_KEY} = req.headers;
-  if (!validator.isValidCookie(req.cookies)) return res.status(401).json({
-      title: 'Not logged in',
-      body: 'You are not logged in. Please login to perform this action.'
+  if (!validator.isValidString(API_KEY)) return res.status(401).json({
+      msg: constants.messages.error.NO_ACCESS_TO_API_KEY 
     });
 
-  let token = tokenManager.decryptToken(req.cookies.session);
-  if(!token || token == -1) return res.status(401).json({
-      title: 'Not logged in',
-      body: 'You are not logged in. Please login to perform this action.'
-    });
-
-  database.user.findById(token.id)
-  .then((user) => {
-    if (!user) return res.status(401).json({
-        title: 'Not logged in',
-        body: 'You are not logged in. Please login to perform this action.'
+  apiKeyManager.decryptApiKey(API_KEY)
+    .then((userData) => {
+      database.api_user.findById(userData.id)
+        .then((apiUser) => {
+          if (!apiUser) return res.status(401).json({
+            msg: constants.messages.error.NO_ACCESS_TO_API_KEY 
+          });
+          req.apiUser = apiUser;
+          next();
+        })
+        .catch((err) => {
+          logger.error(err);
+          return res.status(500).json({
+            msg: constants.messages.error.UNEXPECTED
+          });
+        })
+    })
+    .catch((err) => {
+      logger.error(err);
+      return res.status(500).json({
+        msg: constants.messages.error.UNEXPECTED
       });
-
-    req.userInfo = user;
-    next();
-  })
-  .catch((err) => {
-    logger.error(err);
-    return res.status(500).json({
-      title: 'Unexpected error',
-      body: 'An error occurred while checking your informations. Please try again later.'
     });
-  });
+  let userData = apiKeyManager.decryptApiKey(API_KEY);
 };

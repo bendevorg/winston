@@ -3,7 +3,7 @@
  * @module utils/tokenManager
  */
 const crypto = require('crypto-js');
-const logger = require('../../tools/logger');
+const constants = require('./constants');
 
 /**
  * User's api encrypt and decrypt key
@@ -24,11 +24,10 @@ const apiSecretKey = process.env.API_KEY_ENCRYPTATION;
 exports.generateApiKey = function(userData){
   return new Promise((resolve, reject) => {
     try {
-      if(!userData) return -1;
+      if(!userData) return reject(constants.messages.error.INVALID_USER_DATA);
       let apiKey = crypto.AES.encrypt(JSON.stringify(userData), apiSecretKey).toString();
-      return apiKey;  
+      return resolve(apiKey);  
     } catch (err){
-      logger.error(err);
       return reject(err);
     }   
   });
@@ -46,12 +45,12 @@ exports.generateApiKey = function(userData){
 exports.decryptApiKey = function(apiKey){
   return new Promise((resolve, reject) => {
     try {
+      if(!apiKey) return reject(constants.messages.error.INVALID_API_KEY);
       let userDataInBytes = crypto.AES.decrypt(apiKey, apiSecretKey);
       let userData = JSON.parse(userDataInBytes.toString(crypto.enc.Utf8));
-      return userData;
+      return resolve(userData);
     } catch (err) {
-      logger.error(err);
-      return -1;
+      return reject(err);
     }     
   });   
 };
