@@ -21,8 +21,10 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "crypto-js": "^3.1.9-1",
     "dotenv": "^4.0.0",
     "express": "^4.14.0",
+    "jsonwebtoken": "^8.1.0",
     "pg": "^7.3.0",
     "pg-hstore": "^2.3.2",
     "rollbar": "^2.2.7",

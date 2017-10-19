@@ -9,6 +9,4 @@ router.get('/', (req, res) => {
   res.status(200).json({msg: 'Hi!'});
 });
 
-require('../models/database');
-
 module.exports = router;
