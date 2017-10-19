@@ -1,6 +1,6 @@
 /**
  * Module to gerenate and decrypt API Keys
- * @module utils/tokenManager
+ * @module utils/apiKeyManager
  */
 const crypto = require('crypto-js');
 const constants = require('./constants');
