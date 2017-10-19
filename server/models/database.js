@@ -25,9 +25,6 @@ sequelize
     /*eslint-enable */
   })
   .catch((err) => {
-    /*eslint-disable */
-    console.log(err);
-    /*eslint-enable */
     logger.critical(err);
   });
 
@@ -50,6 +47,14 @@ Object.keys(database).forEach((modelName) => {
   }
 });
 
-database.sequelize.sync();
+database.sequelize.sync()
+  .then(() => {
+    /*eslint-disable */
+    console.log('Tables created');
+    /*eslint-enable */
+  })
+  .catch((err) => {
+    logger.critical(err);
+  });
 
 module.exports = database;
