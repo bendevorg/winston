@@ -10,11 +10,15 @@ router.use(middleware);
 const generateApiKey = require('../controllers/generateApiKey');
 // TODO: Create a fs function to get all controllers
 
+const registerUser = require('../controllers/registerUser');
+
 //  Placeholder API
 router.get('/', (req, res) => {
-  res.status(200).json({msg: 'Hi!'});
+  res.status(200).json({ msg: 'Hi!' });
 });
 
 router.post('/create_api_key', generateApiKey);
+
+router.post('/register', registerUser);
 
 module.exports = router;
