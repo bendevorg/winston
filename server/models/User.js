@@ -1,9 +1,8 @@
 module.exports = (sequelize, DataTypes) => {
   let User = sequelize.define('user', {
     id: {
-      type: DataTypes.UUID,
-      primaryKey: true,
-      defaultValue: DataTypes.UUIDV4
+      type: DataTypes.INTEGER,
+      primaryKey: true
     },
     battletag: {
       type: DataTypes.STRING,

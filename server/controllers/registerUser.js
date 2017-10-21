@@ -6,6 +6,7 @@
 const logger = require('../../tools/logger');
 const database = require('../models/database');
 const validator = require('../utils/validator');
+const constants = require('../utils/constants');
 
 /**
  * Create a new user API
@@ -32,31 +33,35 @@ module.exports = (req, res) => {
       body: 'Invalid BattleTag format.'
     });
 
-  id = id.trim();
+  id = parseInt(id, 10);
   battleTag = battleTag.trim();
 
-  database.user.findById(id).then(existingUser => {
-    if (existingUser)
-      return res.status(400).json({
-        title: 'User already registered',
-        body: 'This user has already been registered with this id.'
-      });
+  database.user
+    .findById(id)
+    .then(existingUser => {
+      if (existingUser)
+        return res.status(400).json({
+          title: 'User already registered',
+          body: 'This user has already been registered with this id.'
+        });
 
-    let newUser = database.user.build({ ...id, ...battleTag });
-    newUser
-      .save()
-      .then(() => {
-        return res.status(201).json({
-          msg: 'User registered'
+      let newUser = database.user.build({ ...id, ...battleTag });
+      newUser
+        .save()
+        .then(() => {
+          return res.status(201).json({
+            msg: 'User registered'
+          });
+        })
+        .catch(err => {
+          logger.error(err);
+          return res
+            .status(500)
+            .json({ msg: constants.messages.error.UNEXPECTED });
         });
-      })
-      .catch(err => {
-        logger.error(err);
-        return res.status(500).json({
-          title: 'Unexpected error',
-          body:
-            'An error occurred while saving your information. Please try again later.'
-        });
-      });
-  });
+    })
+    .catch(err => {
+      logger.error(err);
+      return res.status(500).json({ msg: constants.messages.error.UNEXPECTED });
+    });
 };
