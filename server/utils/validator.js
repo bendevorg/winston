@@ -4,6 +4,7 @@
 */
 
 const _ = require('underscore');
+const constants = require('./constants');
 
 /**
  * Validate if the input is a valid not empty string
@@ -16,9 +17,11 @@ exports.isValidString = stringToValidate => {
 };
 
 exports.isValidInteger = integerToValidate => {
-  return !!integerToValidate;
+  return constants.regex.integer.test(integerToValidate) 
+    && parseInt(integerToValidate) <= Number.MAX_SAFE_INTEGER 
+    && parseInt(integerToValidate) >= Number.MIN_SAFE_INTEGER;
 };
 
 exports.isValidBattleTag = battleTagToValidate => {
-  return !!battleTagToValidate;
+  return constants.regex.battletag.test(battleTagToValidate);
 };

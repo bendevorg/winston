@@ -12,5 +12,9 @@ module.exports = {
       INVALID_NAME: 'The name sent is invalid.',
       INVALID_SOURCE: 'The source sent is invalid.'
     }
+  },
+  regex:{
+    integer: /^-?\d+$/,
+    battletag: /^\w{3,11}[^.*+?^${}()|\[\]\\]?#[0-9]{4,5}$/
   }
 };
