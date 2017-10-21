@@ -20,35 +20,34 @@ const logger = require('../../tools/logger');
  */
 module.exports = function(req, res){
   let {name, source} = req.body;
-  if (!validator.isValidString(name)){
+  if (!validator.isValidString(name))
     return res.status(400).json({
       msg: constants.messages.error.INVALID_NAME
     });
-  }
-  if (!validator.isValidString(source)){
+  if (!validator.isValidString(source))
     return res.status(400).json({
       msg: constants.messages.error.INVALID_SOURCE
     });
-  }
+  
   let userInfo = {name, source};
   let newApiUser = database.api_user.build(userInfo);
   newApiUser
     .save()
-    .then((createdApiUser) => {
+    .then(createdApiUser => {
       apiKeyManager.generateApiKey(newApiUser)
         .then((apiKey) => {
           return res.status(200).json({
             msg: apiKey
           });
         })
-        .catch((err) => {
+        .catch(err => {
           logger.error(err);
           return res.status(500).json({
             msg: constants.messages.error.UNEXPECTED
           });
         })
     })
-    .catch((err) => {
+    .catch(err => {
       logger.error(err);
       return res.status(500).json({
         msg: constants.messages.error.UNEXPECTED

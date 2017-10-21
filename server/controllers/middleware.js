@@ -18,32 +18,30 @@ const logger = require('../../tools/logger');
 */
 module.exports = function (req, res, next){
   const api_key = req.headers["api-key"];
-  if (!validator.isValidString(api_key)) {
+  if (!validator.isValidString(api_key))
     return res.status(401).json({
       msg: constants.messages.error.NO_ACCESS_TO_API_KEY 
     });
-  }
 
   apiKeyManager.decryptApiKey(api_key)
-    .then((userData) => {
+    .then(userData => {
       database.api_user.findById(userData.id)
-        .then((apiUser) => {
-          if (!apiUser) {
+        .then(apiUser => {
+          if (!apiUser)
             return res.status(401).json({
               msg: constants.messages.error.NO_ACCESS_TO_API_KEY 
             });
-          }
           req.apiUser = apiUser;
           return next();
         })
-        .catch((err) => {
+        .catch(err => {
           logger.error(err);
           return res.status(500).json({
             msg: constants.messages.error.UNEXPECTED
           });
         })
     })
-    .catch((err) => {
+    .catch(err => {
       logger.error(err);
       return res.status(500).json({
         msg: constants.messages.error.UNEXPECTED
