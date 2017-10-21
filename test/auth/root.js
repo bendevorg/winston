@@ -1,18 +1,19 @@
 const chai = require('chai');
 const supertest = require('supertest');
-const faker = require('faker');
 
 const expect = chai.expect;
-const app = process.env.NODE_ENV == 'production'?require('../../../serverProduction'):require('../../../serverDevelopment');
+const app = process.env.NODE_ENV == 'production'?require('../../tools/serverProduction'):require('../../tools/serverDevelopment');
 const api = supertest(app);
 
 module.exports = testInfo => {
+  console.log(testInfo);
   describe('Auth use cases', () => {
+    console.log(testInfo);
     
     it('Root access without api-key', done => {
       api
         .get('/api')
-        .set(testInfo.noApiKey.header)
+        .set(testInfo.users.noApiKey.header)
         .end(function(err, res){
           if (err){
             done(err);
@@ -26,7 +27,7 @@ module.exports = testInfo => {
     it('Root access with invalid api-key', done => {
       api
         .get('/api')
-        .set(testInfo.invalidApiKey.header)
+        .set(testInfo.users.invalidApiKey.header)
         .end(function(err, res){
           if (err){
             done(err);
@@ -40,7 +41,7 @@ module.exports = testInfo => {
     it('Root access with valid api-key', done => {
       api
         .get('/api')
-        .set(testInfo.validApiKeyOne.header)
+        .set(testInfo.users.validApiKeyOne.header)
         .end(function(err, res){
           if (err){
             done(err);
