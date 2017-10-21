@@ -21,11 +21,11 @@ module.exports = testInfo => {
           }
         });
     });
-  
+
     it('Root access with invalid api-key', done => {
       api
         .get('/api')
-        .set(testInfo.users.invalidApiKey.header)
+        .set(testInfo.users.noApiKey.header)
         .end((err, res) => {
           if (err){
             done(err);
@@ -35,19 +35,19 @@ module.exports = testInfo => {
           }
         });
     });
-  
+
     it('Root access with valid api-key', done => {
       api
         .get('/api')
-        .set(testInfo.users.validApiKeyOne.header)
+        .set(testInfo.users.noApiKey.header)
         .end((err, res) => {
           if (err){
             done(err);
           } else {
-            expect(res.status, 'Status').to.equal(200);
+            expect(res.status, 'Status').to.equal(401);
             done();
           }
         });
     });
   });
-}
+};

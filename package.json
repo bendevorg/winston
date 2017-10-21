@@ -11,7 +11,9 @@
     "server_production": "node -r dotenv/config tools/startServer.js",
     "env_setup_development": "node tools/setupEnv.js development",
     "server_development": "nodemon tools/startServer.js",
-    "test": "mocha test/runTests.js"
+    "test": "npm run env_setup_production && nyc --reporter=html --reporter=text mocha test/runTests.js --timeout 10000 ",
+    "test_dev": "npm run env_setup_development && nyc --reporter=html --reporter=text mocha test/runTests.js --timeout 10000 ",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -25,18 +27,25 @@
     "dotenv": "^4.0.0",
     "eslint": "^4.9.0",
     "express": "^4.14.0",
+    "nyc": "^11.2.1",
     "pg": "^7.3.0",
     "pg-hstore": "^2.3.2",
     "rollbar": "^2.2.7",
-    "sequelize": "^4.14.0",
+    "sequelize": "^4.15.1",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
     "chai": "^4.1.2",
+    "coveralls": "^3.0.0",
     "mocha": "^4.0.1",
     "morgan": "^1.8.2",
     "nodemon": "^1.12.0",
     "supertest": "^3.0.0"
+  },
+  "nyc": {
+    "include": [
+      "server/**"
+    ]
   },
   "bugs": {
     "url": "https://github.com/guiconti/winston/issues"
