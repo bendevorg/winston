@@ -21,7 +21,7 @@ const apiSecretKey = process.env.API_KEY_ENCRYPTATION;
  * @throws {object} - Returns err that indicates a fail
  * 
  */
-exports.generateApiKey = function(userData){
+exports.generateApiKey = userData => {
   return new Promise((resolve, reject) => {
     try {
       if(!userData) return reject(constants.messages.error.INVALID_USER_DATA);
@@ -42,7 +42,7 @@ exports.generateApiKey = function(userData){
  * @throws {object} - Returns -1 that indicates a fail
  * 
  */
-exports.decryptApiKey = function(apiKey){
+exports.decryptApiKey = apiKey => {
   return new Promise((resolve, reject) => {
     try {
       if(!apiKey) return reject(constants.messages.error.INVALID_API_KEY);

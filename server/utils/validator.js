@@ -11,6 +11,6 @@ const _ = require('underscore');
  * @param {string} stringToValidate - String to be validated
  * @return {boolean} - True case the string is valid and false if it is not
  */
-exports.isValidString = (stringToValidate) => {
+exports.isValidString = stringToValidate => {
   return _.isString(stringToValidate) && stringToValidate.trim().length > 0;
 };
