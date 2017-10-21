@@ -42,6 +42,10 @@ module.exports = function (req, res, next){
         })
     })
     .catch(err => {
+      if (err instanceof SyntaxError)
+        return res.status(401).json({
+          msg: constants.messages.error.NO_ACCESS_TO_API_KEY 
+        });
       logger.error(err);
       return res.status(500).json({
         msg: constants.messages.error.UNEXPECTED

@@ -6,15 +6,13 @@ const app = process.env.NODE_ENV == 'production'?require('../../tools/serverProd
 const api = supertest(app);
 
 module.exports = testInfo => {
-  console.log(testInfo);
   describe('Auth use cases', () => {
-    console.log(testInfo);
     
     it('Root access without api-key', done => {
       api
         .get('/api')
         .set(testInfo.users.noApiKey.header)
-        .end(function(err, res){
+        .end((err, res) => {
           if (err){
             done(err);
           } else {
@@ -28,7 +26,7 @@ module.exports = testInfo => {
       api
         .get('/api')
         .set(testInfo.users.invalidApiKey.header)
-        .end(function(err, res){
+        .end((err, res) => {
           if (err){
             done(err);
           } else {
@@ -42,7 +40,7 @@ module.exports = testInfo => {
       api
         .get('/api')
         .set(testInfo.users.validApiKeyOne.header)
-        .end(function(err, res){
+        .end((err, res) => {
           if (err){
             done(err);
           } else {
