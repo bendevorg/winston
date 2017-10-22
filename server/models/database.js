@@ -24,7 +24,7 @@ sequelize
     console.log('Database connected.');
     /*eslint-enable */
   })
-  .catch((err) => {
+  .catch(err => {
     logger.critical(err);
   });
 
@@ -34,14 +34,14 @@ database.Sequelize = Sequelize;
 
 fs
   .readdirSync(__dirname)
-  .filter((file) =>
+  .filter(file =>
     (file.indexOf('.') !== 0) &&(file !== basename) &&(file.slice(-3) === '.js'))
-  .forEach((file) => {
+  .forEach(file => {
     const model = sequelize.import(path.join(__dirname, file));
     database[model.name] = model;
   });
 
-Object.keys(database).forEach((modelName) => {
+Object.keys(database).forEach(modelName => {
   if ("associate" in database[modelName]) {
     database[modelName].associate(database);
   }
@@ -53,7 +53,7 @@ database.sequelize.sync()
     console.log('Tables created');
     /*eslint-enable */
   })
-  .catch((err) => {
+  .catch(err => {
     logger.critical(err);
   });
 
