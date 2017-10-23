@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       primaryKey: true
     },
-    battletag: {
+    battleTag: {
       type: DataTypes.STRING,
       unique: true,
       allowNull: false,

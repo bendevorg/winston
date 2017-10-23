@@ -45,7 +45,7 @@ module.exports = (req, res) => {
           body: 'This user has already been registered with this id.'
         });
 
-      let newUser = database.user.build({ ...id, ...battleTag });
+      let newUser = database.user.build({ id, battleTag });
       newUser
         .save()
         .then(() => {
