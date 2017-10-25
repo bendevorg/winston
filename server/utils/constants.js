@@ -16,5 +16,43 @@ module.exports = {
   regex:{
     integer: /^-?\d+$/,
     battletag: /^\w{3,11}[^.*+?^${}()|\[\]\\]?#[0-9]{4,5}$/
+  },
+  urls: {
+    OVERBUFF_TOP_PICK: 'https://www.overbuff.com/tank/heroes'
+  },
+  overbuff: {
+    request_constant: '14df061',
+    time: {
+      THIS_WEEK: '1w',
+      THIS_MONTH: '1m',
+      THREE_MONTHS: '3m',
+      SIX_MONTHS: '6m'
+    },
+    platform: {
+      PC: 1,
+      PSN: 2,
+      XBOX: 3
+    },
+    game_mode: {
+      QUICK_PLAY: 1,
+      COMPETITIVE: 2
+    },
+    role: {
+      ALL: 0,
+      OFFENSE: 1,
+      DEFENSE: 2,
+      TANK: 3,
+      SUPPORT: 4
+    },
+    skill_tier: {
+      ALL: 0,
+      BRONZE: 1,
+      SILVER: 2,
+      GOLD: 3,
+      PLATINUM: 4,
+      DIAMOND: 5,
+      MASTER: 6,
+      GRANDMASTER: 7
+    }
   }
 };
