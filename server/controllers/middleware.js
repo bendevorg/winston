@@ -1,7 +1,7 @@
 /**
  * Middleware to access restricted APIs
  * @module controllers/middleware
- */
+*/
 
 const apiKeyManager = require('../utils/apiKeyManager');
 const validator = require('../utils/validator');

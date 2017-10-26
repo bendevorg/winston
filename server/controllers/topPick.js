@@ -17,30 +17,30 @@ module.exports = (req, res) => {
       });
 
     overbuffApiDecriptor(body)
-    .then((heroesInfo) => {
-      heroesInfo.sort((a, b) => {
-        return a.pick_rate>=b.pick_rate?-1:1;
-      });
-      let topPickedHeroes = heroesInfo.slice(0, constants.overbuff.NUMBER_OF_TOP_PICKED);
-      topPickedHeroes.forEach((heroInfo) => {
-        for (key in heroInfo){
-          if (!constants.overbuff.PICK_INFOS.includes(key)){
-            delete heroInfo[key];
+      .then((heroesInfo) => {
+        heroesInfo.sort((a, b) => {
+          return a.pick_rate>=b.pick_rate?-1:1;
+        });
+        let topPickedHeroes = heroesInfo.slice(0, constants.overbuff.NUMBER_OF_TOP_PICKED);
+        topPickedHeroes.forEach((heroInfo) => {
+          for (key in heroInfo){
+            if (!constants.overbuff.PICK_INFOS.includes(key)){
+              delete heroInfo[key];
+            }
           }
-        }
-        heroInfo.hero = constants.overbuff.heroes[heroInfo.hero];
-        heroInfo.pick_rate = Math.round(heroInfo.pick_rate * 10000)/100 + '%';
+          heroInfo.hero = constants.overbuff.heroes[heroInfo.hero];
+          heroInfo.pick_rate = Math.round(heroInfo.pick_rate * 10000)/100 + '%';
+        });
+        delete heroesInfo;
+        return res.status(200).json({
+          msg: topPickedHeroes
+        });
+      })
+      .catch((err) => {
+        logger.error(err);
+        return res.status(500).json({
+          msg: constants.messages.error.OVERBUFF_API
+        });
       });
-      delete heroesInfo;
-      return res.status(200).json({
-        msg: topPickedHeroes
-      });
-    })
-    .catch((err) => {
-      logger.error(err);
-      return res.status(500).json({
-        msg: constants.messages.error.OVERBUFF_API
-      });
-    });
   });
 };
