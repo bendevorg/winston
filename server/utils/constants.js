@@ -56,10 +56,6 @@ module.exports = {
       GRANDMASTER: 7
     },
     decriptor: {
-      FIRST_ACOS_MULTIPLIER: 1.25,
-      FIRST_ASIN_MULTIPLER: 1.16666666667,
-      SECOND_ACOS_MULTIPLIER: 1.125,
-      SECOND_ASIN_MULTIPLER: 1.1,
       NEWLINE_REGEX: /(]|}|&|@|#|\$|\*)/g,
       BRACKET_REGEX: /\[/g
     }

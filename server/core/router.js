@@ -20,6 +20,6 @@ router.get('/', (req, res) => {
 
 router.post('/create_api_key', generateApiKey);
 router.post('/register', registerUser);
-router.post('/top_pick', topPick);
+router.get('/top_pick', topPick);
 
 module.exports = router;
