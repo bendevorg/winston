@@ -47,8 +47,6 @@ Object.keys(database).forEach(modelName => {
   }
 });
 
-database.user.sync({force: true});
-
 database.sequelize.sync()
   .then(() => {
     /*eslint-disable */
