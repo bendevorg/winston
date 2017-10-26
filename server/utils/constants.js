@@ -8,6 +8,7 @@ module.exports = {
       NO_ACCESS_TO_API_KEY: 'You need a valid API key to access this feature.',
       UNEXPECTED: 'An unexpected error occurred while accessing our databases. Please try again.',
       OVERBUFF_API: 'Error accessing overbuff`s API.',
+      INVALID_OVERBUFF_API_DATA: 'Api data sent by overbuff is invalid',
       INVALID_USER_DATA: 'An invalid user data was sent to gerenate an API key.',
       INVALID_API_KEY: 'An invalid api key was sent to decrypt it`s user token.',
       INVALID_NAME: 'The name sent is invalid.',
@@ -23,7 +24,8 @@ module.exports = {
     OVERBUFF_PLAYER_INFO: 'https://www.overbuff.com/players'
   },
   overbuff: {
-    request_constant: '?v=14df061&group_hero=true',
+    NUMBER_OF_TOP_PICKED: 5,
+    REQUEST_CONSTANT: '?v=14df061&group_hero=true',
     time: {
       THIS_WEEK: '&time=1w',
       THIS_MONTH: '&time=1m',
@@ -57,6 +59,34 @@ module.exports = {
     decriptor: {
       NEWLINE_REGEX: /(]|}|&|@|#|\$|\*)/g,
       BRACKET_REGEX: /\[/g
-    }
+    },
+    heroes: {
+      1001: 'Bastion',
+      1002: 'Dva',
+      1003: 'Genji',
+      1004: 'Hanzo',
+      1005: 'Junkrat',
+      1006: 'Lúcio',
+      1007: 'McCree',
+      1008: 'Mei',
+      1009: 'Mercy',
+      1010: 'Pharah',
+      1011: 'Reaper',
+      1012: 'Reinhardt',
+      1013: 'Roadhog',
+      1014: 'Soldier: 76',
+      1015: 'Symmetra',
+      1016: 'Torbjörn',
+      1017: 'Tracer',
+      1018: 'Widowmaker',
+      1019: 'Winston',
+      1020: 'Zarya',
+      1021: 'Zenyatta',
+      1022: 'Ana',
+      1023: 'Sombar',
+      1024: 'Orisa',
+      1025: 'Doomfist'
+    },
+    PICK_INFOS: ['hero', 'pick_rate']
   }
 };

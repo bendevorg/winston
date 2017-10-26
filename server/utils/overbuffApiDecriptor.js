@@ -2,8 +2,9 @@
  * Module to decript overbuff API
  * @module utils/overbuffApiDecriptor.js
  */
-const constants = require('./constants');
 const atob = require('atob');
+const constants = require('./constants');
+const validator = require('./validator');
 
 /**
  * Overbuff decriptor
@@ -16,8 +17,9 @@ const atob = require('atob');
  */
 module.exports = function(encriptedData){
   return new Promise((resolve, reject) => {
+    if (!validator.isValidString(encriptedData))
+      return reject(constants.messages.error.INVALID_OVERBUFF_API_DATA);
     try {
-    
       encriptedData.replace(constants.overbuff.decriptor.NEWLINE_REGEX, '');
       encriptedData.replace(constants.overbuff.decriptor.BRACKET_REGEX, '=');
       let decriptedData = atob(encriptedData.split('').reverse().join('')).split('');
