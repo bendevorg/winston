@@ -7,6 +7,7 @@ module.exports = {
     error: {
       NO_ACCESS_TO_API_KEY: 'You need a valid API key to access this feature.',
       UNEXPECTED: 'An unexpected error occurred while accessing our databases. Please try again.',
+      OVERBUFF_API: 'Error accessing overbuff`s API.',
       INVALID_USER_DATA: 'An invalid user data was sent to gerenate an API key.',
       INVALID_API_KEY: 'An invalid api key was sent to decrypt it`s user token.',
       INVALID_NAME: 'The name sent is invalid.',
@@ -22,38 +23,36 @@ module.exports = {
     OVERBUFF_PLAYER_INFO: 'https://www.overbuff.com/players'
   },
   overbuff: {
-    request_constant: '14df061',
+    request_constant: '?v=14df061&group_hero=true',
     time: {
-      THIS_WEEK: '1w',
-      THIS_MONTH: '1m',
-      THREE_MONTHS: '3m',
-      SIX_MONTHS: '6m'
+      THIS_WEEK: '&time=1w',
+      THIS_MONTH: '&time=1m',
+      THREE_MONTHS: '&time=3m',
+      SIX_MONTHS: '&time=6m'
     },
     platform: {
-      PC: 1,
-      PSN: 2,
-      XBOX: 3
+      PC: '&platform=1',
+      PSN: '&platform=2',
+      XBOX: '&platform=3'
     },
     game_mode: {
-      QUICK_PLAY: 1,
-      COMPETITIVE: 2
+      QUICK_PLAY: '&game_mode=1',
+      COMPETITIVE: '&game_mode=2'
     },
     role: {
-      ALL: 0,
-      OFFENSE: 1,
-      DEFENSE: 2,
-      TANK: 3,
-      SUPPORT: 4
+      OFFENSE: '&role=1',
+      DEFENSE: '&role=2',
+      TANK: '&role=3',
+      SUPPORT: '&role=4'
     },
     skill_tier: {
-      ALL: 0,
-      BRONZE: 1,
-      SILVER: 2,
-      GOLD: 3,
-      PLATINUM: 4,
-      DIAMOND: 5,
-      MASTER: 6,
-      GRANDMASTER: 7
+      BRONZE: '&skill_tier=1',
+      SILVER: '&skill_tier=2',
+      GOLD: '&skill_tier=3',
+      PLATINUM: '&skill_tier=4',
+      DIAMOND: '&skill_tier=5',
+      MASTER: '&skill_tier=6',
+      GRANDMASTER: '&skill_tier=7'
     },
     decriptor: {
       NEWLINE_REGEX: /(]|}|&|@|#|\$|\*)/g,
