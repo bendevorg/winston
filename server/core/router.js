@@ -11,6 +11,7 @@ const generateApiKey = require('../controllers/generateApiKey');
 // TODO: Create a fs function to get all controllers
 
 const registerUser = require('../controllers/registerUser');
+const topPick = require('../controllers/topPick');
 
 //  Placeholder API
 router.get('/', (req, res) => {
@@ -18,7 +19,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/create_api_key', generateApiKey);
-
 router.post('/register', registerUser);
+router.get('/top_pick', topPick);
 
 module.exports = router;
