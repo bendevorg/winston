@@ -18,7 +18,8 @@ module.exports = {
     battletag: /^\w{3,11}[^.*+?^${}()|\[\]\\]?#[0-9]{4,5}$/
   },
   urls: {
-    OVERBUFF_TOP_PICK: 'https://www.overbuff.com/tank/heroes'
+    OVERBUFF_HEROES_INFO: 'https://www.overbuff.com/tank/heroes',
+    OVERBUFF_PLAYER_INFO: 'https://www.overbuff.com/players'
   },
   overbuff: {
     request_constant: '14df061',
@@ -53,6 +54,14 @@ module.exports = {
       DIAMOND: 5,
       MASTER: 6,
       GRANDMASTER: 7
+    },
+    decriptor: {
+      FIRST_ACOS_MULTIPLIER: 1.25,
+      FIRST_ASIN_MULTIPLER: 1.16666666667,
+      SECOND_ACOS_MULTIPLIER: 1.125,
+      SECOND_ASIN_MULTIPLER: 1.1,
+      NEWLINE_REGEX: /(]|}|&|@|#|\$|\*)/g,
+      BRACKET_REGEX: /\[/g
     }
   }
 };
