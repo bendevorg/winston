@@ -12,7 +12,13 @@ module.exports = {
       INVALID_USER_DATA: 'An invalid user data was sent to gerenate an API key.',
       INVALID_API_KEY: 'An invalid api key was sent to decrypt it`s user token.',
       INVALID_NAME: 'The name sent is invalid.',
-      INVALID_SOURCE: 'The source sent is invalid.'
+      INVALID_SOURCE: 'The source sent is invalid.',
+      INVALID_ID: 'The id sent is invalid.',
+      INVALID_BATTLETAG: 'The BattleTag sent is invalid.',
+      EXISTING_USER: 'User already registered.'
+    },
+    success: {
+      USER_REGISTERED: 'User registered.'
     }
   },
   regex:{

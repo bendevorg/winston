@@ -23,14 +23,12 @@ module.exports = (req, res) => {
 
   if (!validator.isValidInteger(id))
     return res.status(400).json({
-      title: 'Invalid id format',
-      body: 'Id must be a valid integer.'
+      msg: constants.messages.error.INVALID_ID
     });
 
   if (!validator.isValidBattleTag(battleTag))
     return res.status(400).json({
-      title: 'Invalid BattleTag',
-      body: 'Invalid BattleTag format.'
+      msg: constants.messages.error.INVALID_BATTLETAG
     });
 
   id = parseInt(id, 10);
@@ -41,8 +39,7 @@ module.exports = (req, res) => {
     .then(existingUser => {
       if (existingUser)
         return res.status(400).json({
-          title: 'User already registered',
-          body: 'This user has already been registered with this id.'
+          msg: constants.messages.error.EXISTING_USER
         });
 
       let newUser = database.user.build({ id, battleTag });
@@ -50,7 +47,7 @@ module.exports = (req, res) => {
         .save()
         .then(() => {
           return res.status(201).json({
-            msg: 'User registered'
+            msg: constants.messages.success.USER_REGISTERED
           });
         })
         .catch(err => {
