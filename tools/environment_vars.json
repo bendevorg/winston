@@ -7,7 +7,6 @@
   "production":{
     "NODE_ENV": "production",
     "PORT": 3302,
-    //  Remove this for real production
     "API_KEY_ENCRYPTATION": "DEV_ENCRYPTATION_SIMPLE_KEY"
   }
 }
