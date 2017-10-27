@@ -6,4 +6,4 @@ let testInfo = require('./testInfo');
 require('./auth/root')(testInfo);
 
 //  Close connections
-//require('./utils/closeConnection')();
+require('./utils/closeApp')();
