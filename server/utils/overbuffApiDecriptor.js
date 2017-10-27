@@ -20,10 +20,11 @@ module.exports = function(encriptedData){
     if (!validator.isValidString(encriptedData))
       return reject(constants.messages.error.INVALID_OVERBUFF_API_DATA);
     try {
-      encriptedData.replace(constants.overbuff.decriptor.NEWLINE_REGEX, '');
-      encriptedData.replace(constants.overbuff.decriptor.BRACKET_REGEX, '=');
-      let decriptedData = atob(encriptedData.split('').reverse().join('')).split('');
-      return resolve(JSON.parse(decriptedData.reverse().join('')));
+      encriptedData = encriptedData.replace(constants.overbuff.decriptor.NEWLINE_REGEX, '');
+      encriptedData = encriptedData.replace(constants.overbuff.decriptor.BRACKET_REGEX, '=');
+      let decriptedData = atob(encriptedData.split('').reverse().join(''))
+        .split('').reverse().join('');
+      return resolve(JSON.parse(decriptedData));
 
     } catch (err){
       return reject(err);
