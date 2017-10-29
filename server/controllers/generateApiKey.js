@@ -34,7 +34,7 @@ module.exports = function(req, res){
   newApiUser
     .save()
     .then(createdApiUser => {
-      apiKeyManager.generateApiKey(newApiUser)
+      apiKeyManager.generateApiKey(createdApiUser)
         .then((apiKey) => {
           return res.status(200).json({
             msg: apiKey
@@ -45,12 +45,12 @@ module.exports = function(req, res){
           return res.status(500).json({
             msg: constants.messages.error.UNEXPECTED
           });
-        })
+        });
     })
     .catch(err => {
       logger.error(err);
       return res.status(500).json({
         msg: constants.messages.error.UNEXPECTED
       });
-    })
+    });
 };

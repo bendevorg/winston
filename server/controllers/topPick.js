@@ -31,7 +31,6 @@ module.exports = (req, res) => {
           heroInfo.hero = constants.overbuff.heroes[heroInfo.hero];
           heroInfo.pick_rate = Math.round(heroInfo.pick_rate * 10000)/100 + '%';
         });
-        delete heroesInfo;
         return res.status(200).json({
           msg: topPickedHeroes
         });
