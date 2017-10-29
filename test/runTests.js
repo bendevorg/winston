@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-let testInfo = require('./testInfo');
+let testInfo = require('./utils/constants').urls;
 
 //  Start tests
 require('./auth/root')(testInfo);
