@@ -1,12 +1,10 @@
-module.exports = () => {
-  describe('Close connections', () => {
+module.exports = describe('Close connections', () => {
     
-    it('Close app', done => {
-      /**
-       * Force to close app
-      */
-      process.exit();
-    });
+  it('Close app', done => {
+    /**
+    * Force to close app
+    */
+    process.exit();
   });
-}
+});
   

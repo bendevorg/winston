@@ -1,11 +1,9 @@
 require('dotenv').config();
 
-let testInfo = require('./utils/constants').urls;
-
 //  Start tests
-require('./auth/root')(testInfo);
+require('./auth/root');
 
-require('./overbuff/topPick');
+//require('./overbuff/topPick')(testInfo);
 
 //  Close connections
-require('./utils/closeApp')();
+require('./utils/closeApp');
