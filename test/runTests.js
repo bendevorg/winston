@@ -3,7 +3,8 @@ require('dotenv').config();
 //  Start tests
 require('./auth/root');
 
-//require('./overbuff/topPick')(testInfo);
+//  Overbuff APIs
+require('./overbuff/topPick');
 
 //  Close connections
 require('./utils/closeApp');
