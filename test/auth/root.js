@@ -1,5 +1,6 @@
 const chai = require('chai');
 const supertest = require('supertest');
+const constants = require('../utils/constants');
 
 const expect = chai.expect;
 const app = process.env.NODE_ENV == 'production'?require('../../tools/serverProduction'):require('../../tools/serverDevelopment');
@@ -10,7 +11,7 @@ module.exports = testInfo => {
     
     it('Root access without api-key', done => {
       api
-        .get('/api')
+        .get(constants.urls.PREFIX)
         .set(testInfo.users.noApiKey.header)
         .end((err, res) => {
           if (err){
@@ -24,7 +25,7 @@ module.exports = testInfo => {
 
     it('Root access with invalid api-key', done => {
       api
-        .get('/api')
+        .get(constants.urls.PREFIX)
         .set(testInfo.users.noApiKey.header)
         .end((err, res) => {
           if (err){
@@ -38,7 +39,7 @@ module.exports = testInfo => {
 
     it('Root access with valid api-key', done => {
       api
-        .get('/api')
+        .get(constants.urls.PREFIX)
         .set(testInfo.users.noApiKey.header)
         .end((err, res) => {
           if (err){
