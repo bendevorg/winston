@@ -20,6 +20,21 @@ module.exports = {
   },
   urls: {
     PREFIX: '/api/',
-    TOP_PICK: 'top_pick'
+    TOP_PICK: 'top_pick',
+    REGISTER_USER: 'register'
+  },
+  register: {
+    invalidId: {
+      id: 'hello',
+      battleTag: 'Tester#12312'
+    },
+    invalidBattleTag: {
+      id: 123,
+      battleTag: 'holysiege'
+    },
+    validInput: {
+      id: 123,
+      battleTag: 'Tester#12312'
+    }
   }
 };
