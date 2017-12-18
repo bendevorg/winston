@@ -24,6 +24,7 @@ module.exports = (req, res) => {
         let topPickedHeroes = heroesInfo.slice(0, constants.overbuff.NUMBER_OF_TOP_PICKED);
         topPickedHeroes.forEach((heroInfo) => {
           for (key in heroInfo){
+            console.log(key);
             if (!constants.overbuff.PICK_INFOS.includes(key)){
               delete heroInfo[key];
             }

@@ -91,7 +91,8 @@ module.exports = {
       1022: 'Ana',
       1023: 'Sombar',
       1024: 'Orisa',
-      1025: 'Doomfist'
+      1025: 'Doomfist',
+      1026: 'Moira'
     },
     PICK_INFOS: ['hero', 'pick_rate']
   }
