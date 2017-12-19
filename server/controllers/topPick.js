@@ -10,7 +10,7 @@ module.exports = (req, res) => {
   url += constants.overbuff.platform.PC;
   url += constants.overbuff.game_mode.COMPETITIVE;
 
-  //console.log ('meme');
+
   request.get({url: url}, (err, httpResponse, body) => {
     if (err)
       return res.status(500).json({
@@ -25,7 +25,6 @@ module.exports = (req, res) => {
         let topPickedHeroes = heroesInfo.slice(0, constants.overbuff.NUMBER_OF_TOP_PICKED);
         topPickedHeroes.forEach((heroInfo) => {
           for (key in heroInfo){
-            console.log(heroesInfo.key);
             if (!constants.overbuff.PICK_INFOS.includes(key)){
               delete heroInfo[key];
             }
