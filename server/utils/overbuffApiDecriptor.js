@@ -24,6 +24,7 @@ module.exports = function(encriptedData){
       encriptedData = encriptedData.replace(constants.overbuff.decriptor.BRACKET_REGEX, '=');
       let decriptedData = atob(encriptedData.split('').reverse().join(''))
         .split('').reverse().join('');
+      decriptedData.replace('?', '');
       return resolve(JSON.parse(decriptedData));
 
     } catch (err){
