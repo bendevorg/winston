@@ -6,10 +6,11 @@ const constants = require('../utils/constants');
 module.exports = (req, res) => {
 
   let url = constants.urls.OVERBUFF_HEROES_INFO + constants.overbuff.REQUEST_CONSTANT;
-  url += constants.overbuff.time.THIS_MONTH;
+  url += constants.overbuff.time.THIS_WEEK;
   url += constants.overbuff.platform.PC;
   url += constants.overbuff.game_mode.COMPETITIVE;
 
+  //console.log ('meme');
   request.get({url: url}, (err, httpResponse, body) => {
     if (err)
       return res.status(500).json({
@@ -24,7 +25,7 @@ module.exports = (req, res) => {
         let topPickedHeroes = heroesInfo.slice(0, constants.overbuff.NUMBER_OF_TOP_PICKED);
         topPickedHeroes.forEach((heroInfo) => {
           for (key in heroInfo){
-            console.log(key);
+            console.log(heroesInfo.key);
             if (!constants.overbuff.PICK_INFOS.includes(key)){
               delete heroInfo[key];
             }
