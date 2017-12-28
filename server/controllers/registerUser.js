@@ -19,8 +19,10 @@ const constants = require('../utils/constants');
  * 
  */
 module.exports = (req, res) => {
+  console.log('NASCEU OTRO');
   let { id, battleTag } = req.body;
-
+  console.log('id: ' + req.body);
+  
   if (!validator.isValidInteger(id))
     return res.status(400).json({
       msg: constants.messages.error.INVALID_ID
