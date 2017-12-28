@@ -26,13 +26,13 @@
     "body-parser": "^1.15.2",
     "crypto-js": "^3.1.9-1",
     "dotenv": "^4.0.0",
-    "eslint": "^4.9.0",
+    "eslint": "^4.10.0",
     "express": "^4.14.0",
     "pg": "^7.3.0",
     "pg-hstore": "^2.3.2",
     "request": "^2.83.0",
-    "rollbar": "^2.2.7",
-    "sequelize": "^4.15.1",
+    "rollbar": "^2.3.1",
+    "sequelize": "^4.22.2",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
@@ -41,8 +41,8 @@
     "mocha": "^4.0.1",
     "morgan": "^1.8.2",
     "nodemon": "^1.12.0",
-    "supertest": "^3.0.0",
-    "nyc": "^11.2.1"
+    "nyc": "^11.3.0",
+    "supertest": "^3.0.0"
   },
   "nyc": {
     "include": [
