@@ -19,9 +19,7 @@ const constants = require('../utils/constants');
  * 
  */
 module.exports = (req, res) => {
-  console.log('NASCEU OTRO');
   let { id, battleTag } = req.body;
-  console.log('id: ' + req.body);
   
   if (!validator.isValidInteger(id))
     return res.status(400).json({
@@ -35,7 +33,7 @@ module.exports = (req, res) => {
 
   id = parseInt(id, 10);
   battleTag = battleTag.trim();
-
+  
   database.user
     .findById(id)
     .then(existingUser => {
