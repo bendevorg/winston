@@ -3,10 +3,10 @@
  * @module registerUser
  */
 
-// const logger = require('../../tools/logger');
-// const database = require('../models/database');
-// const validator = require('../utils/validator');
-// const constants = require('../utils/constants');
+const logger = require('../../tools/logger');
+const database = require('../models/database');
+const validator = require('../utils/validator');
+const constants = require('../utils/constants');
 
 /**
  * Create a new user API
@@ -19,10 +19,11 @@
  * 
  */
 
-module.exports = {
-  getInfo: function(){
-    return "はじめまして！";
-  } 
+module.exports = (req, res) => {
+  return res.status(400).json({
+    msg: 'hajimemashite'
+  //return "はじめまして！";
+  });
 };
 
 // module.exports = (req, res) => {
