@@ -12,7 +12,7 @@ const constants = require('../utils/constants');
  * Create a new user API
  * Get users info and create a new user on the database
  *
- * @param {string} req.bo dy.id - User to be created id
+ * @param {string} req.body.id - User to be created id
  * @param {string} req.body.battleTag - User to be created battletag
  * @return {json} - Returns a success message to the user
  * @throws {json} - Throws a title and body with the error info
@@ -22,9 +22,7 @@ const constants = require('../utils/constants');
 //はじめまして！
 module.exports = (req, res) => {
   let { id } = req.body;
-  id = parseInt(id, 10);
-  console.log("id: " + id);
-  
+  id = parseInt(id, 10);  
   if (!validator.isValidInteger(id))
     return res.status(400).json({
       msg: constants.messages.error.INVALID_ID
@@ -35,7 +33,7 @@ module.exports = (req, res) => {
       id: id 
     }
   }).then(function(rowDeleted){
-    if(rowDeleted === 1){
+    if(rowDeleted){
       return res.status(201).json({
         msg: 'Your id "' + id + '" was successfully found and exterminated!'
       });
