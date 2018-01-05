@@ -15,10 +15,12 @@ module.exports = {
       INVALID_SOURCE: 'The source sent is invalid.',
       INVALID_ID: 'The id sent is invalid.',
       INVALID_BATTLETAG: 'The BattleTag sent is invalid.',
-      EXISTING_USER: 'User already registered.'
+      EXISTING_USER: 'User already registered.',
+      USER_NOT_FOUND: 'User not found.'
     },
     success: {
-      USER_REGISTERED: 'User registered.'
+      USER_REGISTERED: 'User registered.',
+      USER_DELETED: 'User was successfully found and exterminated!'
     }
   },
   regex:{

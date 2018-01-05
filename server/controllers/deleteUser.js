@@ -34,12 +34,12 @@ module.exports = (req, res) => {
     }
   }).then(rowDeleted => {
     if(rowDeleted){
-      return res.status(201).json({
-        msg: 'Your id "' + id + '" was successfully found and exterminated!'
+      return res.status(200).json({
+        msg: constants.messages.success.USER_DELETED
       });
     } else {
       return res.status(400).json({
-        msg: 'User not found.'
+        msg: constants.messages.error.USER_NOT_FOUND
       });
     }
   }, function(err){
