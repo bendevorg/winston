@@ -1,6 +1,6 @@
 /**
- * Create users module
- * @module registerUser
+ * Delete users module
+ * @module deleteUser
  */
 
 const logger = require('../../tools/logger');
@@ -10,10 +10,9 @@ const constants = require('../utils/constants');
 
 /**
  * Create a new user API
- * Get users info and create a new user on the database
+ * Get users ID and removes from the DB
  *
- * @param {string} req.body.id - User to be created id
- * @param {string} req.body.battleTag - User to be created battletag
+ * @param {string} req.body.id - Users ID to be removed from DB
  * @return {json} - Returns a success message to the user
  * @throws {json} - Throws a title and body with the error info
  * 
