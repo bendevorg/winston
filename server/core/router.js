@@ -12,6 +12,7 @@ const generateApiKey = require('../controllers/generateApiKey');
 
 const registerUser = require('../controllers/registerUser');
 const topPick = require('../controllers/topPick');
+const deleteUser = require('../controllers/deleteUser');
 
 //  Placeholder API
 router.get('/', (req, res) => {
@@ -20,6 +21,7 @@ router.get('/', (req, res) => {
 
 router.post('/create_api_key', generateApiKey);
 router.post('/register', registerUser);
+router.delete('/delete_user', deleteUser);
 router.get('/top_pick', topPick);
 
 module.exports = router;

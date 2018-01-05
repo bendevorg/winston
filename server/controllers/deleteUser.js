@@ -3,9 +3,9 @@
  * @module registerUser
  */
 
-// const logger = require('../../tools/logger');
-// const database = require('../models/database');
-// const validator = require('../utils/validator');
+const logger = require('../../tools/logger');
+const database = require('../models/database');
+const validator = require('../utils/validator');
 // const constants = require('../utils/constants');
 
 /**
@@ -19,14 +19,23 @@
  * 
  */
 
-module.exports = (req, res) => {
-  return res.status(400).json({
-    msg: 'hajimemashite'
-  //return "はじめまして！";
-  });
-};
-
 // module.exports = (req, res) => {
+//   let { id } = req.body;
+//   console.log(id);
+
+//   Model.destroy({
+//     where: {
+//         // criteria
+//     }
+//   })
+
+//   return res.status(400).json({
+//     msg: 'hajimemashite'
+//   //return "はじめまして！";
+//   });
+// };
+
+module.exports = (req, res) => {
 //   let { id, battleTag } = req.body;
   
 //   if (!validator.isValidInteger(id))
@@ -69,4 +78,4 @@ module.exports = (req, res) => {
 //       logger.error(err);
 //       return res.status(500).json({ msg: constants.messages.error.UNEXPECTED });
 //     });
-// };
+};
