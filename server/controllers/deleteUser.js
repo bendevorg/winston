@@ -19,22 +19,7 @@ const constants = require('../utils/constants');
  * 
  */
 
-// module.exports = (req, res) => {
-//   let { id } = req.body;
-//   console.log(id);
-
-//   Model.destroy({
-//     where: {
-//         // criteria
-//     }
-//   })
-
-//   return res.status(400).json({
-//     msg: 'hajimemashite'
-//   //return "はじめまして！";
-//   });
-// };
-
+//はじめまして！
 module.exports = (req, res) => {
   let { id } = req.body;
   id = parseInt(id, 10);
@@ -45,62 +30,24 @@ module.exports = (req, res) => {
       msg: constants.messages.error.INVALID_ID
     });
 
-  // database.user.findById(id).then((user) => {
-  //   return res.status(201).json({
-  //     msg: user.battleTag
-  //   });
-  // });
-  
-
   database.user.destroy({
     where: {
-      id: id //this will be your id that you want to delete
+      id: id 
     }
-  }).then(function(rowDeleted){ // rowDeleted will return number of rows deleted
+  }).then(function(rowDeleted){
     if(rowDeleted === 1){
-      console.log('Deleted successfully');
       return res.status(201).json({
         msg: 'Your id "' + id + '" was successfully found and exterminated!'
       });
     } else {
-      return res.status(201).json({
-        msg: 'Telegram ID not found.'
+      return res.status(400).json({
+        msg: 'User not found.'
       });
     }
   }, function(err){
-    console.log(err);
-    return res.status(400).json({
-      msg: 'failed for some reason.'
+    logger.error(err);
+    return res.status(500).json({
+      msg: constants.messages.error.UNEXPECTED
     });
   });
-
-  
-
-  // database.user
-  //   .findById(id)
-  //   .then(existingUser => {
-  //     if (existingUser)
-  //       return res.status(400).json({
-  //         msg: constants.messages.error.EXISTING_USER
-  //       });
-
-  //     let newUser = database.user.build({ id, battleTag });
-  //     newUser
-  //       .save()
-  //       .then(() => {
-  //         return res.status(201).json({
-  //           msg: constants.messages.success.USER_REGISTERED
-  //         });
-  //       })
-  //       .catch(err => {
-  //         logger.error(err);
-  //         return res
-  //           .status(500)
-  //           .json({ msg: constants.messages.error.UNEXPECTED });
-  //       });
-  //   })
-  //   .catch(err => {
-  //     logger.error(err);
-  //     return res.status(500).json({ msg: constants.messages.error.UNEXPECTED });
-  //   });
 };
