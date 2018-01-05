@@ -32,7 +32,7 @@ module.exports = (req, res) => {
     where: {
       id: id 
     }
-  }).then(function(rowDeleted){
+  }).then(rowDeleted => {
     if(rowDeleted){
       return res.status(201).json({
         msg: 'Your id "' + id + '" was successfully found and exterminated!'
