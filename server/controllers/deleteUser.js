@@ -9,7 +9,7 @@ const validator = require('../utils/validator');
 const constants = require('../utils/constants');
 
 /**
- * Create a new user API
+ * Delete user API
  * Get users ID and removes from the DB
  *
  * @param {string} req.body.id - Users ID to be removed from DB
@@ -32,15 +32,13 @@ module.exports = (req, res) => {
       id: id 
     }
   }).then(rowDeleted => {
-    if(rowDeleted){
+    if(rowDeleted)
       return res.status(200).json({
         msg: constants.messages.success.USER_DELETED
       });
-    } else {
-      return res.status(400).json({
-        msg: constants.messages.error.USER_NOT_FOUND
-      });
-    }
+    return res.status(400).json({
+      msg: constants.messages.error.USER_NOT_FOUND
+    });
   }, function(err){
     logger.error(err);
     return res.status(500).json({
