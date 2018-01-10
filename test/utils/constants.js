@@ -36,6 +36,10 @@ module.exports = {
     validInput: {
       id: 123,
       battleTag: 'Tester#12312'
+    },
+    inexistentId:{
+      id: 00000000,
+      battleTag: 'battleTag#00000'
     }
   }
 };
