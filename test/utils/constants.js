@@ -21,7 +21,8 @@ module.exports = {
   urls: {
     PREFIX: '/api/',
     TOP_PICK: 'top_pick',
-    REGISTER_USER: 'register'
+    REGISTER_USER: 'register',
+    DELETE_USER: 'delete_user'
   },
   register: {
     invalidId: {

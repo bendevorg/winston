@@ -11,7 +11,7 @@ const app =
 const api = supertest(app);
 
 module.exports = describe('Register user use cases', () => {
-  it('Register user with invalid id', done => {
+  it('Delete user with invalid id', done => {
     api
       .post(constants.urls.PREFIX + constants.urls.REGISTER_USER)
       .set(constants.users.validApiKeyOne.header)
