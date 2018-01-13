@@ -10,10 +10,10 @@ const app =
     : require('../../tools/serverDevelopment');
 const api = supertest(app);
 
-module.exports = describe('Register user use cases', () => {
+module.exports = describe('Delete user use cases', () => {
   it('Delete user with invalid id', done => {
     api
-      .post(constants.urls.PREFIX + constants.urls.DELETE_USER)
+      .delete(constants.urls.PREFIX + constants.urls.DELETE_USER)
       .set(constants.users.validApiKeyOne.header)
       .send(constants.register.invalidId)
       .end((err, res) => {
@@ -31,7 +31,7 @@ module.exports = describe('Register user use cases', () => {
 
   it('Delete valid inexistent user', done => {
     api
-      .post(constants.urls.PREFIX + constants.urls.DELETE_USER)
+      .delete(constants.urls.PREFIX + constants.urls.DELETE_USER)
       .set(constants.users.validApiKeyOne.header)
       .send(constants.register.inexistentId)
       .end((err, res) => {
@@ -49,7 +49,7 @@ module.exports = describe('Register user use cases', () => {
 
   it('Delete user with valid input', done => {
     api
-      .post(constants.urls.PREFIX + constants.urls.DELETE_USER)
+      .delete(constants.urls.PREFIX + constants.urls.DELETE_USER)
       .set(constants.users.validApiKeyOne.header)
       .send(constants.register.validInput)
       .end((err, res) => {
@@ -58,8 +58,8 @@ module.exports = describe('Register user use cases', () => {
         } else {
           expect(res.body)
             .to.have.property('msg')
-            .to.equal(appConstants.messages.error.EXISTING_USER);
-          expect(res.status, 'Status').to.equal(400);
+            .to.equal(appConstants.messages.success.USER_DELETED);
+          expect(res.status, 'Status').to.equal(200);
           done();
         }
       });

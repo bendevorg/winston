@@ -58,8 +58,8 @@ module.exports = describe('Register user use cases', () => {
         } else {
           expect(res.body)
             .to.have.property('msg')
-            .to.equal(appConstants.messages.error.EXISTING_USER);
-          expect(res.status, 'Status').to.equal(400);
+            .to.equal(appConstants.messages.success.USER_REGISTERED);
+          expect(res.status, 'Status').to.equal(201);
           done();
         }
       });
