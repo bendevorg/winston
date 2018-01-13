@@ -10,10 +10,10 @@ const app =
     : require('../../tools/serverDevelopment');
 const api = supertest(app);
 
-module.exports = describe('Register user use cases', () => {
-  it('Register user with invalid id', done => {
+module.exports = describe('Delete user use cases', () => {
+  it('Delete user with invalid id', done => {
     api
-      .post(constants.urls.PREFIX + constants.urls.REGISTER_USER)
+      .delete(constants.urls.PREFIX + constants.urls.DELETE_USER)
       .set(constants.users.validApiKeyOne.header)
       .send(constants.register.invalidId)
       .end((err, res) => {
@@ -29,27 +29,27 @@ module.exports = describe('Register user use cases', () => {
       });
   });
 
-  it('Register user with invalid battleTag', done => {
+  it('Delete valid inexistent user', done => {
     api
-      .post(constants.urls.PREFIX + constants.urls.REGISTER_USER)
+      .delete(constants.urls.PREFIX + constants.urls.DELETE_USER)
       .set(constants.users.validApiKeyOne.header)
-      .send(constants.register.invalidBattleTag)
+      .send(constants.register.inexistentId)
       .end((err, res) => {
         if (err) {
           done(err);
         } else {
           expect(res.body)
             .to.have.property('msg')
-            .to.equal(appConstants.messages.error.INVALID_BATTLETAG);
+            .to.equal(appConstants.messages.error.USER_NOT_FOUND);
           expect(res.status, 'Status').to.equal(400);
           done();
         }
       });
   });
 
-  it('Register user with valid input', done => {
+  it('Delete user with valid input', done => {
     api
-      .post(constants.urls.PREFIX + constants.urls.REGISTER_USER)
+      .delete(constants.urls.PREFIX + constants.urls.DELETE_USER)
       .set(constants.users.validApiKeyOne.header)
       .send(constants.register.validInput)
       .end((err, res) => {
@@ -58,8 +58,8 @@ module.exports = describe('Register user use cases', () => {
         } else {
           expect(res.body)
             .to.have.property('msg')
-            .to.equal(appConstants.messages.success.USER_REGISTERED);
-          expect(res.status, 'Status').to.equal(201);
+            .to.equal(appConstants.messages.success.USER_DELETED);
+          expect(res.status, 'Status').to.equal(200);
           done();
         }
       });

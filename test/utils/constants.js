@@ -21,7 +21,8 @@ module.exports = {
   urls: {
     PREFIX: '/api/',
     TOP_PICK: 'top_pick',
-    REGISTER_USER: 'register'
+    REGISTER_USER: 'register',
+    DELETE_USER: 'delete_user'
   },
   register: {
     invalidId: {
@@ -35,6 +36,10 @@ module.exports = {
     validInput: {
       id: 123,
       battleTag: 'Tester#12312'
+    },
+    inexistentId:{
+      id: 00000000,
+      battleTag: 'battleTag#00000'
     }
   }
 };
